@@ -31,8 +31,8 @@ impl Pendulum {
     }
 
     fn update(&mut self, angle: f64, velocity: f64) {
-        self.angle = angle;
-        self.velocity = velocity;
+        self.angle += angle;
+        self.velocity += velocity;
     }
 }
 
@@ -52,7 +52,7 @@ fn runge_kutta(pendulum1: &Pendulum, pendulum2: &Pendulum, delta_time: f64) -> V
     let k3 = derivative(m1, m2, l1, l2, &(param + delta_time * k2 / 2.0));
     let k4 = derivative(m1, m2, l1, l2, &(param + delta_time * k3));
     
-    param + delta_time * (k1 + k2 + k3 + k4) / 6.0
+    delta_time * (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0
 }
 
 fn derivative(m1: f64, m2: f64, l1: f64, l2: f64, params: &Vector4<f64>) -> Vector4<f64> {
@@ -83,7 +83,7 @@ fn derivative(m1: f64, m2: f64, l1: f64, l2: f64, params: &Vector4<f64>) -> Vect
 #[macroquad::main("BasicShapes")]
 async fn main() {
     let mut pendulum1 = Pendulum::new(1.0, 2.0, 90.0);
-    let mut pendulum2 = Pendulum::new(1.0, 2.0, 120.0);
+    let mut pendulum2 = Pendulum::new(1.0, 2.0, 91.0);
     let anchor0 = Vector2::new(0.0_f64, 0.0_f64);
 
     loop {
