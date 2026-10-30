@@ -50,4 +50,4 @@ I started by modelling the forces on each bob on paper (F = ma) and integrating 
 
 ## A note on tools
 
-I wrote the simulation myself, working from the documentation of the libraries above. Afterwards, I used Claude (Anthropic's AI assistant) to tidy up and comment the code and to write this README.
+I wrote the simulation myself, working from the documentation of the libraries above. Afterwards, I used Claude (Anthropic's AI assistant) to write this README.
